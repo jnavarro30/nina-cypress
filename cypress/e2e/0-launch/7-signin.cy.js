@@ -10,6 +10,7 @@ describe("launch screen", () => {
   });
 
   after(() => {
+    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
     signOut();
   })
 });
