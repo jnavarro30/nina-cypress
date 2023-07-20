@@ -1,11 +1,20 @@
-// describe("video calls", () => {
-//   it("redirect to video calls", () => {
-//     cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
-//     cy.wait(3000);
-//     cy.contains("Video Calls").click();
-//     cy.url().should("include", "video-call");
-//   });
-// });
+describe("video calls", () => {
+  beforeEach(() => {
+    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
+    cy.wait(3000);
+    cy.contains("Video Calls").click();
+  });
+  it("redirect to video calls", () => {
+    cy.url().should("include", "video-call");
+  });
+
+  it("help is functional", () => {
+    cy.contains("Help").click();
+    cy.contains("Making & Receiving a Video Call").should("be.visible");
+    cy.get("#back-btn");
+    cy.contains("Video Call").should("be.visible");
+  });
+});
 
 describe("manage contacts", () => {
   beforeEach(() => {
@@ -48,29 +57,29 @@ describe("manage contacts", () => {
   });
 });
 
-// describe("call history", () => {
-//   beforeEach(() => {
-//     cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
-//     cy.wait(3000);
-//     cy.contains("Video Calls").click();
-//     cy.contains("Call History").click();
-//   });
+describe("call history", () => {
+  beforeEach(() => {
+    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
+    cy.wait(3000);
+    cy.contains("Video Calls").click();
+    cy.contains("Call History").click();
+  });
 
-//   it("bring up call modal and select no", () => {
-//     cy.contains(/Incoming|Outgoing/).click();
-//     cy.contains("No").click();
-//     cy.contains(/Incoming|Outgoing/).should("be.visible");
-//   });
+  it("bring up call modal and select no", () => {
+    cy.contains(/Incoming|Outgoing/).click();
+    cy.contains("No").click();
+    cy.contains(/Incoming|Outgoing/).should("be.visible");
+  });
 
-//   it("bring up call modal, select yes and cancel call", () => {
-//     cy.contains(/Incoming|Outgoing/).click();
-//     cy.contains("Yes").click();
-//     cy.wait(2000);
-//     cy.get("#back-btn").click();
-//     cy.contains("Add New Contact").should("be.visible");
-//   });
+  it("bring up call modal, select yes and cancel call", () => {
+    cy.contains(/Incoming|Outgoing/).click();
+    cy.contains("Yes").click();
+    cy.wait(2000);
+    cy.get("#back-btn").click();
+    cy.contains("Add New Contact").should("be.visible");
+  });
 
-//   it("display call counter", () => {
-//     cy.contains(/\d+ Calls/).should("be.visible");
-//   })
-// });
+  it("display call counter", () => {
+    cy.contains(/\d+ Calls/).should("be.visible");
+  });
+});
