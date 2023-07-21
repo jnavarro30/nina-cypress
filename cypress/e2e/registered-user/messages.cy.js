@@ -25,14 +25,14 @@ describe("filter options", () => {
     cy.contains(/No Messages|\d+/).should("be.visible");
   });
 
-  it("filter by not seen", () => {
-    cy.contains("Not Seen").click();
-    cy.contains(/No Messages|New/).should("be.visible");
-  });
-
   it("filter by sender", () => {
     cy.contains("Sender").click();
     cy.contains("From").should("be.visible");
+  });
+
+  it("filter by not seen", () => {
+    cy.contains("Not Seen").click();
+    cy.contains(/No Messages|New/).should("be.visible");
   });
 
   it("filter by favorites", () => {
