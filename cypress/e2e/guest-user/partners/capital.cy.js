@@ -1,29 +1,26 @@
-describe("capital", () => {
+import config from "../../../config";
+const { name, title, section, sub } = config.partners[0];
+
+describe(name, () => {
   beforeEach(() => {
-    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
+    cy.visit(config.GUEST);
     cy.wait(3000);
     cy.get(".stroke-2").click();
-    cy.contains("Featured Free").click();
-    cy.contains("Pharmacy Discount").click();
+    cy.contains(section).click();
+    cy.contains(title).click();
   });
 
-  it("redirect to pharmacy discount", () => {
-    cy.url().should("include", "pharmacy-discount");
+  it(`redirects to ${sub}`, () => {
+    cy.url().should("include", sub);
   });
 
-  it("info video", () => {
+  it("plays the info video", () => {
     cy.contains("Watch Info Video").click();
     cy.url().should("include", "learn-more");
+    cy.contains("Back").click();
   });
 
-  it("get started", () => {
-    cy.contains("Get Started").click();
-    cy.url().should("include", "partner/capital-rx");
-  });
-
-  it("back from iframe", () => {
-    cy.contains("Get Started").click();
-    cy.get("#back-btn").click();
-    cy.url().should("include", "pharmacy-discount");
+  it("has a qrcode", () => {
+    cy.get('.h-56 > img').should("be.visible");
   });
 });

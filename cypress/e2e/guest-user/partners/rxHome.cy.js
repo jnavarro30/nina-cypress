@@ -1,29 +1,26 @@
-describe("rx home test", () => {
+import config from "../../../config";
+const { name, title, section, sub } = config.partners[8];
+
+describe(name, () => {
   beforeEach(() => {
-    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
+    cy.visit(config.GUEST);
     cy.wait(3000);
     cy.get(".stroke-2").click();
-    cy.contains("At-Home Tests").click();
-    cy.contains("At Home Lab Tests").click();
+    cy.contains(section).click();
+    cy.contains(title).click();
   });
 
-  it("redirect to rx home test", () => {
-    cy.url().should("include", "home-lab-tests");
+  it(`redirects to ${sub}`, () => {
+    cy.url().should("include", sub);
   });
 
-  it("info video", () => {
+  it("plays the info video", () => {
     cy.contains("Watch Info Video").click();
     cy.url().should("include", "learn-more");
+    cy.contains("Back").click();
   });
 
-  it("get started", () => {
-    cy.contains("Get Started").click();
-    cy.url().should("include", "home-lab-tests/app");
-  });
-
-  it("back from iframe", () => {
-    cy.contains("Get Started").click();
-    cy.get("#back-btn").click();
-    cy.url().should("include", "home-lab-tests");
+  it("has a qrcode", () => {
+    cy.get('.h-56 > img').should("be.visible");
   });
 });

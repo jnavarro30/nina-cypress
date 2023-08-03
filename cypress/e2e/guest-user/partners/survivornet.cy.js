@@ -1,35 +1,26 @@
-describe("surivior net", () => {
+import config from "../../../config";
+const { name, title, section, sub } = config.partners[11];
+
+describe(name, () => {
   beforeEach(() => {
-    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
+    cy.visit(config.GUEST);
     cy.wait(3000);
     cy.get(".stroke-2").click();
-    cy.contains("Videos On Demand").click();
-    cy.contains("Inspiration").click();
+    cy.contains(section).click();
+    cy.contains(title).click();
   });
 
-  it("redirect to inspiration", () => {
-    cy.url().should("include", "inspiration");
+  it(`redirects to ${sub}`, () => {
+    cy.url().should("include", sub);
   });
 
-  it("info video", () => {
+  it("plays the info video", () => {
     cy.contains("Watch Info Video").click();
     cy.url().should("include", "learn-more");
+    cy.contains("Back").click();
   });
 
-  it("watch streaming", () => {
-    cy.contains("Watch Streaming").click();
-    cy.url().should("include", "learn-more");
-  });
-
-  it("watch on demand", () => {
-    cy.contains("Watch on Demand").click();
-    cy.url().should("include", "partner/survivor-net");
-  });
-
-  it("back from iframe", () => {
-    cy.contains("Watch on Demand").click();
-    cy.wait(2000);
-    cy.get("#back-btn").click();
-    cy.url().should("include", "inspiration");
+  it("has a qrcode", () => {
+    cy.get('.h-56 > img').should("be.visible");
   });
 });

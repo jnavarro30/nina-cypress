@@ -1,0 +1,13 @@
+import "./capital.cy";
+import "./carefree.cy";
+import "./coroHealth.cy";
+import "./dentulu.cy";
+import "./flexIt.cy";
+import "./lucid.cy";
+import "./mediOrbisDoctor.cy";
+import "./mediOrbisTherapist.cy";
+import "./rxHome.cy";
+import "./seniorSavvy.cy";
+import "./spiro.cy";
+import "./survivornet.cy";
+import "./webMd.cy";
