@@ -1,6 +1,8 @@
+import url from "../../config";
+
 describe("video clips", () => {
     beforeEach(() => {
-      cy.visit("https://tv.independa.com/?device_id=GUEST&tv=lg");
+      cy.visit(url.GUEST);
       cy.wait(3000);
       cy.contains("Video Clips").click();
     });
@@ -15,5 +17,6 @@ describe("video clips", () => {
         .its("body")
         .find("#qrcode")
         .should("exist");
+        cy.get('.fixed > .btn-cursor').click();
     });
   });

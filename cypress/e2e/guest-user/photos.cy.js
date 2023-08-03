@@ -1,6 +1,8 @@
+import url from "../../config";
+
 describe("photos", () => {
   beforeEach(() => {
-    cy.visit("https://tv.independa.com/?device_id=GUEST&tv=lg");
+    cy.visit(url.GUEST);
     cy.wait(3000);
     cy.contains("Photos").click();
   });
@@ -15,7 +17,7 @@ describe("photos", () => {
       .its("body")
       .find("#qrcode")
       .should("exist");
-    cy.contains("Back").click();
+      cy.get('.fixed > .btn-cursor').click();
     cy.url().should("include", "GUEST");
   });
 });

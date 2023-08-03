@@ -1,6 +1,8 @@
+import url from "../../config";
+
 describe("messages", () => {
   beforeEach(() => {
-    cy.visit("https://tv.independa.com/?device_id=GUEST&tv=lg");
+    cy.visit(url.GUEST);
     cy.wait(3000);
     cy.contains("Messages").click();
   });
