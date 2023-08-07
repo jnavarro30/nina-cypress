@@ -41,7 +41,7 @@ describe("bingo", () => {
     cy.contains("Medium").click();
     cy.contains("Back").click();
     cy.contains("Quit").click();
-    cy.url().should("include", "games/menu");
+    cy.url().should("include", "app-details");
   });
 
   it("high score", () => {
