@@ -18,18 +18,18 @@ describe("word hunt", () => {
   });
 
   it("paused", () => {
-    cy.contains("Back").click();
+    cy.get("#back-btn").click();
     cy.contains("Paused").should("be.visible");
   });
 
   it("quit", () => {
-    cy.contains("Back").click();
+    cy.get("#back-btn").click();
     cy.contains("Quit").click();
     cy.url().should("include", "app-details");
   });
 
   it("statistics", () => {
-    cy.contains("Back").click();
+    cy.get("#back-btn").click();
     cy.contains("Statistics").click();
     cy.contains("No Statistics Yet").should("be.visible");
     cy.get("#back-btn").click();

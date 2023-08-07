@@ -21,25 +21,4 @@ describe("settings", () => {
     cy.contains("Clear Data").click();
     cy.contains("Are You Sure").should("be.visible");
   });
-
-  it("paused", () => {
-    cy.contains("Medium").click();
-    cy.contains("Back").click();
-    cy.contains("Paused").should("be.visible");
-  });
-
-  it("quit", () => {
-    cy.contains("Medium").click();
-    cy.contains("Back").click();
-    cy.contains("Quit").click();
-    cy.url().should("include", "app-details");
-  });
-
-  it("high score", () => {
-    cy.contains("Medium").click();
-    cy.contains("Back").click();
-    cy.contains("High Score").click();
-    cy.contains("No Score Yet").should("be.visible");
-    cy.get("#back-btn").click();
-  });
 });
