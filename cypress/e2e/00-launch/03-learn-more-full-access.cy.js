@@ -1,13 +1,15 @@
 import { signOut } from "../../support/utils";
+import { GUEST_LAUNCH, GUEST } from "../../config";
+
 describe("launch screen", () => {
     it("learn more redirect to learn more page", () => {
-      cy.visit("https://tv.independa.com/launch?device_id=PROD&tv=lg");
+      cy.visit(GUEST_LAUNCH);
       cy.contains("Learn More").click();
-      cy.url().should("match", /.+learn-more.+/);
+      cy.url().should("include", "learn-more");
     });
   
     it("full access redirect to signup page", () => {
-      cy.visit("https://tv.independa.com/launch/learn-more?device_id=PROD&tv=lg");
+      cy.visit("https://tv.independa.com/launch/learn-more?device_id=GUEST&tv=lg");
       cy.contains("Full Access").click();
       cy.url().should("eq", "https://tv.independa.com/launch/sign-up");
     });
@@ -20,7 +22,7 @@ describe("launch screen", () => {
     })
 
     after(() => {
-        cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
-        signOut();
+        cy.visit(GUEST);
+        signOut(GUEST);
       })
   });

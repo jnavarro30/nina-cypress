@@ -1,7 +1,9 @@
 import { signOut } from "../../support/utils";
+import { GUEST_LAUNCH, GUEST } from "../../config";
+
 describe("launch screen", () => {
     it("redirect to tv signup and fill in fields", () => {
-      cy.visit("https://tv.independa.com/launch?device_id=PROD&tv=lg");
+      cy.visit(GUEST_LAUNCH);
       cy.contains("Learn More").click();
       cy.contains("Full Access").click();
       cy.contains("Using Your Television").click();
@@ -19,7 +21,7 @@ describe("launch screen", () => {
     });
   
     after(() => {
-        cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
-        signOut();
+        cy.visit(GUEST);
+        signOut(GUEST);
       })
   });

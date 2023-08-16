@@ -1,6 +1,8 @@
+import { PROD, GHOST } from "../../config";
+
 describe("messages", () => {
   beforeEach(() => {
-    cy.visit("https://tv.independa.com/?device_id=GHOST&tv=lg");
+    cy.visit(GHOST);
     cy.wait(3000);
     cy.contains("Messages").click();
   });
@@ -15,7 +17,7 @@ describe("messages", () => {
 
 describe("filter options", () => {
   beforeEach(() => {
-    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
+    cy.visit(PROD);
     cy.wait(3000);
     cy.contains("Messages").click();
   });
@@ -43,7 +45,7 @@ describe("filter options", () => {
 
 describe("message navigation", () => {
   beforeEach(() => {
-    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
+    cy.visit(PROD);
     cy.wait(3000);
     cy.contains("Messages").click();
   });

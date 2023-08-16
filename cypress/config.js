@@ -1,7 +1,9 @@
 // registered user
 const PROD = 'https://tv.independa.com/?device_id=PROD&tv=lg';
+const PROD_LAUNCH = 'https://tv.independa.com/launch?device_id=PROD'
 // unregistered user
-const GUEST = 'https://tv.independa.com/?device_id=GUEST&tv=lg';
+const GUEST = 'https://tv.independa.com/?device_id=GUEST';
+const GUEST_LAUNCH = 'https://tv.independa.com/launch?device_id=GUEST';
 // registered user without content
 const GHOST = 'https://tv.independa.com/?device_id=GHOST&tv=lg';
 
@@ -89,7 +91,9 @@ const partners = [
 
 export default {
     PROD,
+    PROD_LAUNCH,
     GUEST,
+    GUEST_LAUNCH,
     GHOST,
     partners
 }

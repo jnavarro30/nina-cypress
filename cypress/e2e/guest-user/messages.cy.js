@@ -1,8 +1,8 @@
-import url from "../../config";
+import { GUEST } from "../../config";
 
 describe("messages", () => {
   beforeEach(() => {
-    cy.visit(url.GUEST);
+    cy.visit(GUEST);
     cy.wait(3000);
     cy.contains("Messages").click();
   });

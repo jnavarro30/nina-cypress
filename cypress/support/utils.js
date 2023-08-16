@@ -1,5 +1,5 @@
-export const signOut = () => {
-    cy.visit("https://tv.independa.com/?device_id=PROD&tv=lg");
+export const signOut = (url) => {
+    cy.visit(url);
     cy.get(".stroke-2").click();
     cy.contains("Settings").click();
     cy.contains("Personalization").click();
